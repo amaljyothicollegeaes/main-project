@@ -1,0 +1,93 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url(s_images/003.jpg);
+  background-size: cover;
+  background-position: absolute;
+  font-family: sans-serif;
+}
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  position: absolute;
+  top: -50px;
+  left: calc(50% - 50px);
+}
+.loginbox {
+  width: 500px;
+  height: 660px;
+  background: rgb(53, 48, 48);
+  color: #fff;
+  top: 55%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  padding: 70px 30px;
+  border-radius: 50px;
+}
+
+h1 {
+  margin: 0;
+  padding: 0 0 20px;
+  text-align: center;
+  font-size: 22px;
+}
+h2 {
+  font-size: 15px;
+  font-weight: lighter;
+}
+.loginbox input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #fff;
+  background: transparent;
+  color: yellowgreen;
+  font-size: 16px;
+  height: 35px;
+  outline: none;
+}
+
+.loginbox input[type="text"] {
+  width: 49%;
+}
+.loginbox input[type="submit"] {
+  width: 30%;
+  background: blue;
+}
+.loginbox input[type="checkbox"] {
+  width: 5%;
+  height: 10px;
+}
+.loginbox input[type="submit"] {
+  border: none;
+  outline: none;
+  height: 40px;
+  background: rgb(10, 122, 156);
+  color: #fff;
+  font-size: 18px;
+  border-radius: 20px;
+}
+.loginbox input[type="submit"]:hover {
+  cursor: pointer;
+  background: rgb(196, 240, 3);
+  color: #000;
+}
+.loginbox a {
+  text-decoration: none;
+  font-size: 12px;
+  line-height: 20px0;
+  color: darkgrey;
+}
+.loginbox a:hover {
+  color: #ffc107;
+}
+.loginbox p {
+  font-weight: bold;
+}
+.loginbox input[type="submit"]:hover {
+  cursor: pointer;
+  background: rgb(196, 240, 3);
+  color: rgb(0, 0, 0);
+}
