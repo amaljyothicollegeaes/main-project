@@ -70,7 +70,7 @@ CFWC has travelled the difficult path with courage, confidence and blessings of 
 
     <div class="menu2">
                    <ul>
-                        <li><a href="http://localhost/ewed/">HELP 
+                        <li><a href="index.php">HELP 
                             <ol> <li>FAQ<li></ol>
                             <ol> <li>Contact Us<li></ol>
                             <ol> <li>Report Misuse<li></ol>
@@ -79,7 +79,7 @@ CFWC has travelled the difficult path with courage, confidence and blessings of 
                             <ol> <li>Careers<li></ol>
                         </a></li>
                         
-                        <li><a href="http://localhost/ewed/">MATRIMONY SERVICE
+                        <li><a href="index.php">MATRIMONY SERVICE
                             <ol> <li>Free Membership Service<li></ol>
                             <ol> <li>Paid Membership Service<li></ol>
                             <ol> <li>Digital Magazine<li></ol>
@@ -88,7 +88,7 @@ CFWC has travelled the difficult path with courage, confidence and blessings of 
                             <ol> <li>Advertise With Us<li></ol>
                         </a></li>
                         
-                        <li><a href="SERVICE">OTHER SERVICE
+                        <li><a href="index.php">OTHER SERVICE
                             <ol> <li>Matrimony Blog<li></ol>
                             <ol> <li>Android App<li></ol>
                             <ol> <li>Specific Matrimony App<li></ol>
@@ -97,7 +97,7 @@ CFWC has travelled the difficult path with courage, confidence and blessings of 
                             <ol> <li>Photo Gallary<li></ol>
                         </a></li>
 
-                        <li><a href="CONTACT">CONTACT US
+                        <li><a href="contact.php">CONTACT US
                             <ol> <li>Team Welfare center<li></ol>
                             <ol> <li>2nd Floor,Cultural Center<li></ol>
                             <ol> <li>Near somewhere <li></ol>
@@ -106,7 +106,7 @@ CFWC has travelled the difficult path with courage, confidence and blessings of 
                             <ol> <li>Kerala, India<li></ol>
                         </a></li>
 
-                        <li><a href="http://localhost/ewed/about.php">ABOUT US
+                        <li><a href="about.php">ABOUT US
                             <ol> <li>About us <li></ol>
                             <ol> <li>Press Release<li></ol>
                             <ol> <li>Team Details<li></ol>
