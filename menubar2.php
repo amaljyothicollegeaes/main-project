@@ -21,7 +21,7 @@ if (!isset($_SESSION['id'])) {
   <nav class="navbar navbar-light bg-dark fixed-top">
     <div class="container-fluid">
       <a class="navbar-brand" href="#" style="color:blue;">
-        <h2>Admin Panel</h2>
+        <h2 style="margin-left:40%">E Wed</h2>
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" style="background:grey">
         <span class="navbar-toggler-icon"></span>

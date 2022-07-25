@@ -12,6 +12,12 @@ if (isset($_GET['id'])) {
     profilestatus = 1
     WHERE cid = $ids ";
 
+    $query1 = "UPDATE status 
+    SET 
+    report = 0
+    WHERE cid = $ids ";
+
+    $result1 = mysqli_query($con, $query1);
     $result = mysqli_query($con, $query);
     if ($result) {
         header("Location: managing_users.php");

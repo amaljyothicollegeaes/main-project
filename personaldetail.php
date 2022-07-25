@@ -5,7 +5,7 @@ include("function.php");
 //include("menubar.php");
 
 $id = $_SESSION['id'];
-$ids = $_GET['id'];
+// $ids = $_GET['id'];
 if (!isset($_SESSION['id'])) {
     header("Location:login.php");
 }
@@ -175,13 +175,15 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
+    <script src="https://unpkg.com/feather-icons"></script>
 
 </head>
 
-<!-- <body style="background-color:black;color:white"> -->
 
-<body>
-    <nav class="navbar navbar-light bg-dark fixed-top">
+
+<body style="background-color:#e8eff4">
+
+    <nav class=" navbar navbar-light bg-dark fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="#" style="color:blue;">
                 <h2 style="margin-left:40px">E Wed</h2>
@@ -226,30 +228,16 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" style="background:grey">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div style="color:blue;background:black;border:white;" class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                     <div class="offcanvas-header">
                         <h5 class="offcanvas-title" id="offcanvasNavbarLabel" style="color: blue">E Wed</h5>
                         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body">
-                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3" style="font-weight:bold;">
-                            <li class="nav-item">
-                                <a class="nav-link " aria-current="page" href="personaldetail.php?id=<?= $id ?>">View and Edit Profiles</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link " aria-current="page" href="main.php">Matches</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="my_matches.php">My Matches</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="requests.php?id=<?= $id ?>">Request</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="logout.php">Logout</a>
-                            </li>
-                            <br>
-                        </ul>
+
+                        <?php
+                        include("side_menu.php");
+                        ?>
 
                     </div>
                 </div>
@@ -260,7 +248,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
     <br><br><br><br>
-    <div class="container border border-2 border-dark" style="padding: 15px;border-radius:5px;">
+    <div class="container border border-info" style="padding: 15px;border-radius:5px;background-color:white">
         <center>
             <h3 style="color:blue">YOUR PROFILE</h3>
         </center>
@@ -278,11 +266,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
 
-
-
     <?php
-    if (isset($_GET['id'])) {
-        $ids = $_GET['id'];
+    if (isset($_SESSION['id'])) {
+        $ids = $_SESSION['id'];
         // echo $ids;
 
         $table = "SELECT * from profiledata where cid = $ids";
@@ -296,8 +282,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
                     <form name="profile" method="POST">
 
-                        <div class="container border border-2 border-dark" style="padding: 15px;border-radius:5px;">
-                            <!-- <div class="container" style="background-color:#e0ecf2;padding: 15px;box-shadow: 5px 5px lightblue;"> -->
+                        <div class="container border border-info" style="padding: 15px;border-radius:5px;background-color:white">
+
                             <div class="row">
                                 <label for="exampleInputEmail1" class="form-label" style="color:white;background-color:blue;margin-top: 10px;">
                                     <h4>
@@ -313,7 +299,13 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                                         $name = $fetchimageresultdata["profiles"];
                                     ?>
                                         <a href="image_upload/changeimagefront.php?id=<?= $ids ?>">
-                                            <img class="img rounded" src="image_upload/images/<?php echo $name; ?>" style="width: 100px;height: 100px;margin-left: 30px;" alt="Error" /></a>
+                                            <img class="img rounded" src="image_upload/images/<?php echo $name; ?>" style="width: 100px;height: 100px;margin-left: 30px;" alt="Error" />
+
+                                        </a>
+                                        <i style="color:black;margin-left:-27px;margin-top:78px;" data-feather="edit"></i>
+                                        <script>
+                                            feather.replace()
+                                        </script>
                                     <?php
                                     }
                                     ?>
@@ -472,9 +464,85 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
 
-
-                        <div class="container border border-2 border-dark" style="padding: 15px;border-radius:5px;">
+                        <div class="container border border-info" style="padding: 15px;border-radius:5px;background-color:white">
                             <div class="row">
+                                <label for="exampleInputEmail1" class="form-label" style="color:white;background-color:blue;margin-top: 10px;">
+                                    <h4>
+                                        <center>Images</center>
+                                    </h4>
+                                </label><br><br>
+                                <!-- <div class="col"> -->
+                                <?php
+
+                                $fetchimage = "SELECT * FROM photos where cid = $ids";
+                                $fetchimageresult = mysqli_query($con, $fetchimage);
+                                while ($fetchimageresultdata = mysqli_fetch_assoc($fetchimageresult)) {
+                                    $name = $fetchimageresultdata["profiles"];
+                                ?>
+                                    <!-- <img class="rounded" src="image_upload/images/<?php echo $name; ?>" style="width: 100px;height: 100px;margin-left: 30px;" alt="Error" /> -->
+                                    <!-- <div class="row"> -->
+                                    <div class="col">
+                                        <center>
+                                            <img class="rounded" width="400px" height="400px" src="image_upload/images/<?php echo $name; ?>" alt="" id="ProductImg">
+                                        </center>
+                                    </div>
+                            </div>
+                            <center>
+                                <div class="row">
+                                    <div class="col">
+                                        <?php
+                                        if ($name != "") {
+                                        ?><br>
+                                            <div class=" small-img-row">
+                                                <div class="small-img-col">
+                                                    <img style="border-radius:5px" width="100px" height="100px" src="image_upload/images/<?php echo $name; ?>" alt="" class="small-img">
+                                                    <img style="border-radius:5px" width="100px" height="100px" src="image_upload/images/<?php echo $fetchimageresultdata["pic1"]; ?>" alt="" class="small-img">
+                                                    <img style="border-radius:5px" width="100px" height="100px" src="image_upload/images/<?php echo $fetchimageresultdata["pic2"]; ?>" alt="" class="small-img">
+                                                    <img style="border-radius:5px" width="100px" height="100px" src="image_upload/images/<?php echo $fetchimageresultdata["pic3"]; ?>" alt="" class="small-img">
+                                                    <img style="border-radius:5px" width="100px" height="100px" src="image_upload/images/<?php echo $fetchimageresultdata["pic4"]; ?>" alt="" class="small-img">
+                                                </div>
+                                                <script>
+                                                    var ProductImg = document.getElementById("ProductImg");
+                                                    var SmallImg = document.getElementsByClassName("small-img");
+                                                    SmallImg[0].onclick = function() {
+                                                        ProductImg.src = SmallImg[0].src;
+                                                    }
+                                                    SmallImg[1].onclick = function() {
+                                                        ProductImg.src = SmallImg[1].src;
+                                                    }
+                                                    SmallImg[2].onclick = function() {
+                                                        ProductImg.src = SmallImg[2].src;
+                                                    }
+                                                    SmallImg[3].onclick = function() {
+                                                        ProductImg.src = SmallImg[3].src;
+                                                    }
+                                                    SmallImg[4].onclick = function() {
+                                                        ProductImg.src = SmallImg[4].src;
+                                                    }
+                                                </script>
+                                            </div>
+                                        <?php
+                                        }
+                                        ?>
+                                        <!-- </div> -->
+                                    <?php
+                                }
+                                    ?>
+                                    </div>
+
+
+                                    <br>
+                                </div>
+                            </center>
+                        </div>
+
+                        <br>
+
+
+
+
+                        <div class="container border border-info" style="padding: 15px;border-radius:5px;background-color:white">
+                            <div class=" row">
                                 <br><br>
                                 <label for="exampleInputEmail1" class="form-label" style="color:white;background-color:blue;margin-top: 10px;">
                                     <center>
@@ -555,16 +623,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
 
-
-
-
-
-
-
-
-
-                        <div class="container border border-2 border-dark" style="padding: 15px;border-radius:5px;">
-                            <div class="row">
+                        <div class="container border border-info" style="padding: 15px;border-radius:5px;background-color:white">
+                            <div class=" row">
                                 <br><br>
                                 <label for="exampleInputEmail1" class="form-label" style="color:white;background-color:blue;margin-top: 10px;">
                                     <center>
@@ -625,8 +685,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                         </div>
                         <br>
 
-                        <div class="container border border-2 border-dark" style="padding: 15px;border-radius:5px;">
-                            <div class="row">
+
+
+                        <div class="container border border-info" style="padding: 15px;border-radius:5px;background-color:white">
+                            <div class=" row">
                                 <br><br>
                                 <label for="exampleInputEmail1" class="form-label" style="color:white;background-color:blue;margin-top: 10px;">
                                     <h4>
@@ -699,8 +761,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                     ?>
 
                         <br>
-                        <div class="container border border-2 border-dark" style="padding: 15px;border-radius:5px;">
-                            <div class="row">
+                        <div class="container border border-info" style="padding: 15px;border-radius:5px;background-color:white">
+                            <div class=" row">
                                 <br><br>
                                 <label for="exampleInputEmail1" class="form-label" style="color:white;background-color:blue;margin-top: 10px;">
                                     <center>

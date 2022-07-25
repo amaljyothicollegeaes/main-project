@@ -96,14 +96,14 @@ $data_received_by = $data['fname'];
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div style="background:black;border:white;" class=" offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                     <div class="offcanvas-header">
                         <h5 class="offcanvas-title" id="offcanvasNavbarLabel" style="color:blue">E Wed</h5>
                         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
 
                     <div class="offcanvas-body">
-                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3" style="font-weight:bold;">
+                        <!-- <ul class="navbar-nav justify-content-end flex-grow-1 pe-3" style="font-weight:bold;">
                             <li class="nav-item">
                                 <a class="nav-link " aria-current="page" href="personaldetail.php?id=<?= $id ?>">View and Edit Profiles</a>
                             </li>
@@ -120,7 +120,54 @@ $data_received_by = $data['fname'];
                                 <a class="nav-link" href="logout.php">Logout</a>
                             </li>
                             <br>
-                        </ul>
+                        </ul> -->
+                        <!-- <ul class="navbar-nav justify-content-end flex-grow-1 pe-3" style="font-weight:bold;">
+
+                            <li class="nav-item btn btn-outline-light" style="margin-right:-9%;border-radius: 40px 40px 40px 40px;">
+                                <a style="color:blue" class="nav-link " aria-current="page" href="personaldetail.php?id=<?= $id ?>">
+                                    <b>
+                                        View and Edit Profile
+                                    </b>
+                                </a>
+                            </li>
+
+                            <li class="nav-item btn btn-outline-light" style="margin-right:-9%;border-radius: 40px 40px 40px 40px;">
+                                <a style="color:blue" class="nav-link" href="main.php">
+                                    <b>
+                                        Matches
+                                    </b>
+                                </a>
+                            </li>
+
+                            <li class="nav-item btn btn-outline-light" style="margin-right:-9%;border-radius: 40px 40px 40px 40px;">
+                                <a style="color:blue" class="nav-link" href="my_matches.php">
+                                    <b>
+                                        My Matches
+                                    </b>
+                                </a>
+                            </li>
+
+                            <li class="nav-item btn btn-outline-light" style="margin-right:-9%;border-radius: 40px 40px 40px 40px;">
+                                <a style="color:blue" class="nav-link" href="requests.php?id=<?= $id ?>">
+                                    <b>
+                                        Requests
+                                    </b>
+                                </a>
+                            </li>
+
+                            <li class="nav-item btn btn-outline-light" style="margin-right:-9%;border-radius: 40px 40px 40px 40px;">
+                                <a style="color:blue" class="nav-link" href="logout.php">
+                                    <b>
+                                        Logout
+                                    </b>
+                                </a>
+                            </li>
+
+                            <br>
+                        </ul> -->
+                        <?php
+                        include("side_menu.php");
+                        ?>
                     </div>
                 </div>
         </div>

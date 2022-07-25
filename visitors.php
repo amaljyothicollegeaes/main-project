@@ -4,12 +4,12 @@ include("connection.php");
 include("function.php");
 
 
+$id = $_SESSION['id'];
 if (!isset($_SESSION['id'])) {
     header("Location:login.php");
 }
 
-$id = $_SESSION['id'];
-$ids = $_GET['id'];
+
 
 
 
@@ -49,6 +49,11 @@ if ($dt_today <= $dt) {
 
 
 
+
+
+
+
+
 ?>
 <html>
 
@@ -62,9 +67,8 @@ if ($dt_today <= $dt) {
 <body style="background-color:#e8eff4">
     <nav class="navbar navbar-light bg-dark fixed-top">
         <div class="container-fluid">
-
-            <a class="navbar-brand" href="#" style="color:blue">
-                <h2 style="margin-left: 40px;color:blue">E Wed</h2>
+            <a class="navbar-brand" href="#" style="color:blue;">
+                <h2 style="margin-left: 40px;">E Wed</h2>
             </a>
 
 
@@ -99,23 +103,23 @@ if ($dt_today <= $dt) {
 
 
 
-
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" style="background:grey">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div style="color:blue;background:black;border:white;" class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                     <div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel" style="color:blue">E Wed</h5>
+                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel" Style="color: blue;">E Wed</h5>
                         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body">
+
 
                         <?php
                         include("side_menu.php");
                         ?>
 
                         <form class="d-flex">
-
+                        </form>
                     </div>
                 </div>
         </div>
@@ -123,7 +127,6 @@ if ($dt_today <= $dt) {
     <br><br>
     <br>
     <br>
-
 
 
     <?php
@@ -152,10 +155,14 @@ if ($dt_today <= $dt) {
 
 
 
-
         <?php
-        $table = "SELECT * from profiledata where cid in (SELECT s.cid from status s,interest i  where s.profilestatus = 1  and i.iid = $id and i.ReadOrNot = 1 and s.cid = i.cid) ";
+
+        $table = "SELECT * from profiledata where cid in (SELECT cid from status where profilestatus = 1) and cid in (SELECT cid from visitors where visited_id = $id)";
         $result = mysqli_query($con, $table);
+
+        $table2 = "SELECT * from profiledata where cid in (SELECT cid from status where profilestatus = 1) and  cid in (SELECT cid from visitors where visited_id = $id)";
+        $result2 = mysqli_query($con, $table2);
+
         if (mysqli_num_rows($result) > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
         ?>
@@ -176,8 +183,7 @@ if ($dt_today <= $dt) {
                                 <a href="viewprofile.php?id=<?= $row["cid"] ?>">
                                     <img class=" rounded" src="image_upload/images/<?php echo $name; ?>" style="width: 400px;height: 400px;margin-left: 30px;" alt="Error" />
                                 </a>
-                                <!-- <img src="s_images/Solid1.webp" style="width: 400px;height: 400px;margin-left: 30px;" border="1" alt="Error"/></a> -->
-                            <?php } ?>
+                                <!-- <img src="s_images/Solid1.webp" style="width: 400px;height: 400px;margin-left: 30px;" border="1" alt="Error"/></a> --><?php } ?>
                         </div>
 
 
@@ -191,13 +197,119 @@ if ($dt_today <= $dt) {
                             <tr><br>
                                 <td><span class="#" style="color:blue">ID :</span>
                                     <?php echo $row["cid"]; ?>
+                                </td>
+                                <br><br>
+                                <?php
 
 
-                                    <a href="rejectmatch.php?id=<?= $row["cid"] ?>" class="btn btn-outline-danger" style="color:black;float:right">Reject</a>
-                                    <a href="acceptmatch.php?id=<?= $row["cid"] ?>" class="btn btn-outline-primary" style="color:black;float:right;margin-right: 30px;">Accept</a>
+                                ?>
+                                <td><span class="#" style="color:blue">Name :</span>
+                                    <?php echo $row["fname"] . " " . $row["lname"]; ?>
+                                </td>
+                                <br><br>
+                                <?php
+
+                                ?>
+                                <td><span class="#" style="color:blue">Education :</span>
+                                    <?php echo $row["educationqualification"]; ?>
+                                </td>
+                                <br><br>
+                                <?php
+
+                                ?>
+                                <td><span class="#" style="color:blue">Date of Birth :</span>
+                                    <?php echo $row["dob"]; ?>
+                                </td>
+                                <br><br>
+                                <!-- </div> -->
+
+                                <!-- <div class="col"> -->
+                                <?php
 
 
 
+                                ?>
+                                <td><span class="#" style="color:blue">Finance Status:</span>
+                                    <?php echo $row["financialstatus"]; ?>
+                                </td>
+                                <br><br>
+                                <?php
+
+                                ?>
+                                <td><span class="#" style="color:blue">Age :</span>
+                                    <?php echo $row["age"]; ?>
+                                </td>
+                                <br><br>
+                                <?php
+
+                                ?>
+                                <td><span class="#" style="color:blue">Height :</span>
+                                    <?php echo $row["heigth"]; ?>
+                                </td>
+                                <br><br>
+                                <?php
+
+                                ?>
+                                <td><span class="#" style="color:blue">Weight :</span>
+                                    <?php echo $row["weights"]; ?>
+                                </td>
+                                <br>
+                            </tr>
+                            <?php
+
+                            ?>
+                        </div>
+                    </div>
+                </div>
+                <!-- </div> -->
+                <br><?php
+
+                }
+
+
+
+
+                // if (mysqli_num_rows($result2) > 0) {
+                //     while ($row = mysqli_fetch_assoc($result2)) {
+                //         //
+                //         // $zzz = mysqli_num_rows($result2);
+                //         // echo "<br><br><br><br><br><br><br>ok" . $zzz;
+                //     }
+                // }
+            } else if (mysqli_num_rows($result2) > 0) {
+                while ($row = mysqli_fetch_assoc($result2)) {
+                    ?>
+                <!-- <div class="card" style="background-color:#e0ecf2;"> -->
+                <div class="container rounded" style="padding: 15px;box-shadow: 1px 1px 5px 5px lightblue;background:white;color:black">
+                    <div class="row">
+                        <div class="col">
+                            <?php
+                            $value = $row["cid"];
+                            $fetchimage = "SELECT * FROM photos where cid = $value";
+                            $fetchimageresult = mysqli_query($con, $fetchimage);
+                            // echo $value;
+                            while ($fetchimageresultdata = mysqli_fetch_assoc($fetchimageresult)) {
+                                // echo $fetchimageresultdata["profiles"];
+                                $name = $fetchimageresultdata["profiles"];
+
+                            ?>
+                                <a href="viewprofile.php?id=<?= $row["cid"] ?>">
+                                    <img class=" rounded" src="image_upload/images/<?php echo $name; ?>" style="width: 400px;height: 400px;margin-left: 30px;" alt="Error" />
+                                </a>
+                                <!-- <img src="s_images/Solid1.webp" style="width: 400px;height: 400px;margin-left: 30px;" border="1" alt="Error"/></a> --><?php } ?>
+                        </div>
+
+
+
+
+
+
+
+                        <div class="col">
+
+                            <tr><br>
+                                <td><span class="#" style="color:blue">ID :</span>
+                                    <?php echo $row["cid"]; ?>
                                 </td>
                                 <br><br>
                                 <?php
@@ -268,13 +380,15 @@ if ($dt_today <= $dt) {
                 }
             } else {
                     ?>
-
-
+            <!-- <tr> -->
+            <!-- <td colspan="6"> -->
             <center class="alert alert-info container">
                 <h3>
-                    No New Requests !!!
+                    No Matching Profile !!!
                 </h3>
             </center>
+            <!-- </td> -->
+            <!-- </tr> -->
     <?php
             }
         }

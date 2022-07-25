@@ -3,7 +3,7 @@ include("connection.php");
 include("function.php");
 include("menubar3.php");
 $id = $_SESSION['id'];
-// echo $id;
+
 ?>
 <html>
 
@@ -27,16 +27,15 @@ $id = $_SESSION['id'];
 
 </head>
 
-<!-- <body style="background-color:#e8e8e8;"> -->
 
-<body>
-    <form class="border border-2 border-dark rounded" style="margin-right:4%;margin-left:4%;background-color:ghostwhite">
+
+<body style="background-color:#e8eff4">
+    <form class="border border-2 border-info rounded" style="margin-right:4%;margin-left:4%;background-color:ghostwhite">
         <br>
 
         <center>
-            <h3 class="bg-dark rounded" style="color:blue;margin-right:1%;margin-left:1%;padding:1%">
-                <!-- <i style="color:blue" data-feather="log-out">
-                </i> -->
+            <h3 class="rounded" style="color:white;margin-right:1%;margin-left:1%;padding:1%;background-color:blue">
+                
                 NEW USERS
             </h3>
         </center><br><br>

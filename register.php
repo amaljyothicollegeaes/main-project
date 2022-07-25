@@ -7,6 +7,8 @@ $dbpassword = "";
 $dbname = "ewed";
 $con = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbname);
 
+
+
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $fname = $_POST['fname'];
     $lname = $_POST['lname'];
@@ -27,6 +29,16 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
 <html>
+<style>
+    #myVideo {
+        position: cover center;
+        right: 0;
+        bottom: 0;
+        /* margin-left: -50%; */
+        width: 100%;
+        height: 100%;
+    }
+</style>
 
 <head>
     <title>register</title>
@@ -82,6 +94,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 </head>
 
 <body>
+    <video autoplay muted loop id="myVideo">
+        <source src="s_images/golden.mp4" type="video/mp4">
+    </video>
     <div class="loginbox">
         <img src="avatar.png" class="avatar">
         <form name="formregister" method="POST" onsubmit="sub()">

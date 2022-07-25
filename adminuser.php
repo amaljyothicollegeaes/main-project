@@ -23,20 +23,20 @@ include("menubar2.php");
 
 <body>
   <!-- <body style="background-color:#e8e8e8;"> -->
-  <form class="border border-4 border-dark rounded " style="margin-right:4%;margin-left:4%;">
+  <form class="border rounded border-info" style="margin-right:4%;margin-left:4%;background-color:#e2ebeb"">
     <br>
     <center>
-      <h3 class="bg-dark rounded" style="color:blue;margin-right:1%;margin-left:1%;padding:1%">VERIFIED USERS</h3>
+      <h3 class=" bg-dark rounded" style="color:blue;margin-right:1%;margin-left:1%;padding:1%">VERIFIED USERS</h3>
     </center><br>
     <div class="container">
       <table id="example" class="table table-dark table-hover table-striped table-bordered">
         <thead>
           <tr>
             <th scope="col" style="color:blue">ID</th>
+            <th scope="col" style="color:blue">Image</th>
             <th scope="col" style="color:blue">User Name</th>
             <th scope="col" style="color:blue">Email</th>
             <th scope="col" style="color:blue">View Profile</th>
-            <!-- <th scope="col">Confirm</th> -->
             <th scope="col" style="color:blue">Remove</th>
           </tr>
         </thead>
@@ -53,6 +53,21 @@ include("menubar2.php");
                 <?php echo $row["cid"]; ?>
               </td>
               <?php
+              $cid = $row["cid"];
+              $table_cid = "SELECT * from photos where cid = $cid";
+              $result_cid = mysqli_query($con, $table_cid);
+              $data_cid = mysqli_fetch_assoc($result_cid);
+              ?>
+              <td>
+                <center>
+                  <?php $profile = $data_cid["profiles"]; ?>
+                  <img src="image_upload/images/<?php echo $profile; ?>" style="width: 40px;height: 40px;border-radius:20px;border:2px solid blue;" alt="No_Image" />
+                </center>
+              </td>
+              <?php
+
+
+
               ?>
               <td>
                 <?php echo $row["fname"] . " " . $row["lname"]; ?>

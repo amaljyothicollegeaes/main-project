@@ -138,7 +138,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 </head>
 
-<body>
+<body style="background-color:#e8eff4">
+
     <nav class="navbar navbar-light bg-dark fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="#" style="color:blue;">
@@ -180,15 +181,15 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" style="background:grey">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div style="color:blue;background:black;border:white;" class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                     <div class="offcanvas-header">
                         <h5 class="offcanvas-title" id="offcanvasNavbarLabel" style="color:blue">E Wed</h5>
                         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body">
-                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3" style="font-weight:bold;">
+                        <!-- <ul class="navbar-nav justify-content-end flex-grow-1 pe-3" style="font-weight:bold;">
                             <li class="nav-item">
-                                <a class="nav-link " aria-current="page" href="profile.php">Edit Profile</a>
+                                <a class="nav-link " aria-current="page" href="editprofile.php?id=<?= $id ?>">View and Edit Profiles</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="main.php">Matches</a>
@@ -203,10 +204,58 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                                 <a class="nav-link" href="logout.php">Logout</a>
                             </li>
                             <br>
-                        </ul>
+                        </ul> -->
+                        <!-- <ul class="navbar-nav justify-content-end flex-grow-1 pe-3" style="font-weight:bold;">
+
+                            <li class="nav-item btn btn-outline-light" style="margin-right:-9%;border-radius: 40px 40px 40px 40px;">
+                                <a style="color:blue" class="nav-link " aria-current="page" href="personaldetail.php?id=<?= $id ?>">
+                                    <b>
+                                        View and Edit Profile
+                                    </b>
+                                </a>
+                            </li>
+
+                            <li class="nav-item btn btn-outline-light" style="margin-right:-9%;border-radius: 40px 40px 40px 40px;">
+                                <a style="color:blue" class="nav-link" href="main.php">
+                                    <b>
+                                        Matches
+                                    </b>
+                                </a>
+                            </li>
+
+                            <li class="nav-item btn btn-outline-light" style="margin-right:-9%;border-radius: 40px 40px 40px 40px;">
+                                <a style="color:blue" class="nav-link" href="my_matches.php">
+                                    <b>
+                                        My Matches
+                                    </b>
+                                </a>
+                            </li>
+
+                            <li class="nav-item btn btn-outline-light" style="margin-right:-9%;border-radius: 40px 40px 40px 40px;">
+                                <a style="color:blue" class="nav-link" href="requests.php?id=<?= $id ?>">
+                                    <b>
+                                        Requests
+                                    </b>
+                                </a>
+                            </li>
+
+                            <li class="nav-item btn btn-outline-light" style="margin-right:-9%;border-radius: 40px 40px 40px 40px;">
+                                <a style="color:blue" class="nav-link" href="logout.php">
+                                    <b>
+                                        Logout
+                                    </b>
+                                </a>
+                            </li>
+
+                            <br>
+                        </ul> -->
+
+                        <?php
+                        include("side_menu.php");
+                        ?>
+
                         <form class="d-flex">
-                            <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> -->
-                            <!-- <button class="btn btn-outline-success" type="submit">Search</button> -->
+
                         </form>
                     </div>
                 </div>
@@ -216,31 +265,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <br><br><br><br><br>
     <center style="padding: 15px;box-shadow: 1px 1px 5px 5px lightblue;background:white;color:black;margin-right:5%;margin-left:9%;color:blue" class="container rounded">
-        <h2>Your Preference<h2>
+        <h2>Edit Preference<h2>
     </center><br>
 
 
@@ -252,10 +279,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         while ($row = mysqli_fetch_assoc($result)) {
         ?>
             <div class="container">
-
-
-
-
 
 
 
@@ -348,25 +371,25 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                     <div class="col">
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Height min</label><label style="color:red;"> *</label>
-                            <input type="number" class="form-control" id="heightmin" name="heightmin" value="<?php echo $row["heightmin"] ?>" required />
+                            <input type="number" class="form-control" id="heightmin" name="heightmin" min="100" value="<?php echo $row["heightmin"] ?>" required />
                         </div>
                     </div>
                     <div class="col">
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Height max</label><label style="color:red;"> *</label>
-                            <input type="number" class="form-control" id="heightmax" name="heightmax" value="<?php echo $row["heightmax"] ?>" required />
+                            <input type="number" class="form-control" id="heightmax" name="heightmax" min="100" value="<?php echo $row["heightmax"] ?>" required />
                         </div>
                     </div>
                     <div class="col">
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">Age min</label><label style="color:red;"> *</label>
-                            <input type="number" class="form-control" id="agemin" name="agemin" value="<?php echo $row["agemin"] ?>" required />
+                            <input type="number" class="form-control" id="agemin" name="agemin" min="18" value="<?php echo $row["agemin"] ?>" required />
                         </div>
                     </div>
                     <div class="col">
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">Age max</label><label style="color:red;"> *</label>
-                            <input type="number" class="form-control" id="agemax" name="agemax" value="<?php echo $row["agemax"] ?>" required />
+                            <input type="number" class="form-control" id="agemax" name="agemax" min="18" value="<?php echo $row["agemax"] ?>" required />
                         </div>
                     </div>
 

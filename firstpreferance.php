@@ -100,29 +100,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ?>
 <html>
 
@@ -134,7 +111,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 </head>
 
-<body>
+<body style="background-color:#e8eff4">
     <nav class="navbar navbar-light bg-dark fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="#" style="color:blue;">
@@ -149,7 +126,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body">
-                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3" style="font-weight:bold;">
+                    Complete Registerations Process
+                    <!-- <ul class="navbar-nav justify-content-end flex-grow-1 pe-3" style="font-weight:bold;">
                         <li class="nav-item">
                             <a class="nav-link " aria-current="page" href="http://localhost/ewed/profile.php">Edit Profile</a>
                         </li>
@@ -163,10 +141,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                             <a class="nav-link" href="logout.php">Logout</a>
                         </li>
                         <br>
-                    </ul>
+                    </ul> -->
                     <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
+
                     </form>
                 </div>
             </div>
@@ -198,285 +175,288 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
 
-    <br><br><br><br><br><br>
-    <center>Preferance Details</center><br><br>
+    <br><br><br><br><br>
+
+    <div class="container" style="padding: 15px;box-shadow: 1px 1px 5px 5px lightblue;border-radius:5px;background-color:white">
+        
+        <center style="color:white;background-color:blue;border-radius:5px;"><h3>Preferance Details</h3></center><br><br>
 
 
-    <form name="profile" method="POST">
+        <form name="profile" method="POST">
 
-        <?php
-
-
-        ?>
-        <div class="container">
+            <?php
 
 
+            ?>
+            <div class="container">
 
 
 
 
 
-            <div class="row">
-                <div class="col">
-                    <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Education</label><label style="color:red;"> *</label>
-                        <!-- <input type="text" class="form-control" id="education" name="education" required/> -->
-                        <select class="form-select col-4" id="education" name="education">
-                            <option value="ANY">ANY</option>
-                            <?php
-                            $basic = "SELECT * FROM education ";
-                            $basicresult = mysqli_query($con, $basic);
-                            while ($rowbasic = mysqli_fetch_assoc($basicresult)) {
-                            ?>
-                                <option value="<?php echo $rowbasic["e_value"] ?>"><?php echo $rowbasic["e_value"] ?></option>
-                            <?php } ?>
-                        </select>
+
+
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Education</label><label style="color:red;"> *</label>
+                            <!-- <input type="text" class="form-control" id="education" name="education" required/> -->
+                            <select class="form-select col-4" id="education" name="education">
+                                <option value="ANY">ANY</option>
+                                <?php
+                                $basic = "SELECT * FROM education ";
+                                $basicresult = mysqli_query($con, $basic);
+                                while ($rowbasic = mysqli_fetch_assoc($basicresult)) {
+                                ?>
+                                    <option value="<?php echo $rowbasic["e_value"] ?>"><?php echo $rowbasic["e_value"] ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
                     </div>
-                </div>
 
-                <div class="col">
-                    <label for="exampleInputPassword1" class="form-label">Marital Status</label><label style="color:red;"> *</label>
-                    <!-- <div class="container"> -->
-                    <!-- <div class="row"> -->
-                    <select class="form-select col-4" id="maritalStatus" name="maritalStatus">
-                        <option value="ANY">ANY</option>
-                        <option value="SINGLE">SINGLE</option>
-                        <option value="DIVORCED">DIVORCED</option>
-                    </select>
-                    <!-- </div> -->
-                    <!-- </div>         -->
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col">
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">District</label><label style="color:red;"> *</label>
-                        <!-- <input type="text" class="form-control" id="district" name="district" required/> -->
-                        <select class="form-select col-4" id="district" name="district">
-                            <option value="ANY">ANY</option>
-                            <?php
-                            $basic = "SELECT * FROM district ";
-                            $basicresult = mysqli_query($con, $basic);
-                            while ($rowbasic = mysqli_fetch_assoc($basicresult)) {
-                            ?>
-                                <option value="<?php echo $rowbasic["d_value"] ?>"><?php echo $rowbasic["d_value"] ?></option>
-                            <?php } ?>
-                        </select>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">State</label><label style="color:red;"> *</label>
-                        <!-- <input type="text" class="form-control" id="state" name="state" required/> -->
-                        <select class="form-select col-4" id="state" name="state">
-                            <option value="ANY">ANY</option>
-                            <?php
-                            $basic = "SELECT * FROM state ";
-                            $basicresult = mysqli_query($con, $basic);
-                            while ($rowbasic = mysqli_fetch_assoc($basicresult)) {
-                            ?>
-                                <option value="<?php echo $rowbasic["s_value"] ?>"><?php echo $rowbasic["s_value"] ?></option>
-                            <?php } ?>
-                        </select>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Country</label><label style="color:red;"> *</label>
-                        <!-- <input type="text" class="form-control" id="country" name="country" required/> -->
-                        <select class="form-select col-4" id="country" name="country">
-                            <option value="ANY">ANY</option>
-                            <option value="INDIA">INDIA</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="row">
-                <div class="col">
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Height min</label><label style="color:red;"> *</label>
-                        <input type="number" class="form-control" id="heightmin" name="heightmin" min="50" max="250" required />
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Height max</label><label style="color:red;"> *</label>
-                        <input type="number" class="form-control" id="heightmax" name="heightmax" min="50" max="250" required />
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Age min</label><label style="color:red;"> *</label>
-                        <input type="number" class="form-control" id="agemin" name="agemin" value="18" min="18" max="100" required />
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Age max</label><label style="color:red;"> *</label>
-                        <input type="number" class="form-control" id="agemax" name="agemax" min="18" max="100" required />
-                    </div>
-                </div>
-
-            </div>
-
-
-            <div class="row">
-                <div class="col">
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Religion</label><label style="color:red;"> *</label>
-                        <!-- <input type="text" class="form-control" id="religion" name="religion"  required/> -->
-                        <select class="form-select col-4" id="religion" name="religion">
-                            <option value="ANY">ANY</option>
-                            <?php
-                            $basic = "SELECT * FROM religion ";
-                            $basicresult = mysqli_query($con, $basic);
-                            while ($rowbasic = mysqli_fetch_assoc($basicresult)) {
-                            ?>
-                                <option value="<?php echo $rowbasic["r_value"] ?>"><?php echo $rowbasic["r_value"] ?></option>
-                            <?php } ?>
-                        </select>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Caste</label><label style="color:red;"> *</label>
-                        <!-- <input type="text" class="form-control" id="caste" name="caste"  required/> -->
-                        <select class="form-select col-4" id="caste" name="caste">
-                            <option value="ANY">ANY</option>
-                            <?php
-                            $basic = "SELECT * FROM caste ";
-                            $basicresult = mysqli_query($con, $basic);
-                            while ($rowbasic = mysqli_fetch_assoc($basicresult)) {
-                            ?>
-                                <option value="<?php echo $rowbasic["c_value"] ?>"><?php echo $rowbasic["c_value"] ?></option>
-                            <?php } ?>
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col">
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Body Type</label><label style="color:red;"> *</label>
+                    <div class="col">
+                        <label for="exampleInputPassword1" class="form-label">Marital Status</label><label style="color:red;"> *</label>
                         <!-- <div class="container"> -->
                         <!-- <div class="row"> -->
-                        <select class="form-select col-4" aria-label="Default select example" id="bodytype" name="bodytype">
+                        <select class="form-select col-4" id="maritalStatus" name="maritalStatus">
                             <option value="ANY">ANY</option>
-                            <option value="Slim">Slim</option>
-                            <option value="Normal">Normal</option>
-                            <option value="Fat">Fat</option>
+                            <option value="SINGLE">SINGLE</option>
+                            <option value="DIVORCED">DIVORCED</option>
                         </select>
                         <!-- </div> -->
-                        <!-- </div> -->
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Drink</label><label style="color:red;"> *</label>
-                        <!-- <div class="container">
-                <div class="row"> -->
-                        <select class="form-select col-4" aria-label="Default select example" id="drink" name="drink">
-                            <option value="ANY">ANY</option>
-                            <option value="YES">YES</option>
-                            <option value="NO">NO</option>
-                        </select>
-                        <!-- </div>
-            </div> -->
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Smoke</label><label style="color:red;"> *</label>
-                        <!-- <div class="container">
-                <div class="row"> -->
-                        <select class="form-select col-4" aria-label="Default select example" id="smoke" name="smoke">
-                            <option value="ANY">ANY</option>
-                            <option value="YES">YES</option>
-                            <option value="NO">NO</option>
-                        </select>
-                        <!-- </div>
-            </div> -->
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-
-                <div class="col">
-                    <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Finantial Status</label><label style="color:red;"> *</label>
-                        <!-- <div class="container">
-                    <div class="row"> -->
-                        <select class="form-select col-4" aria-label="Default select example" id="finantialstatus" name="finantialstatus">
-                            <option value="ANY">ANY</option>
-                            <option value="Poor">Poor</option>
-                            <option value="Middle">Middle</option>
-                            <option value="High">High</option>
-                        </select>
-                        <!-- </div>
-                </div> -->
+                        <!-- </div>         -->
                     </div>
                 </div>
 
-                <div class="col">
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Occupation</label><label style="color:red;"> *</label>
-                        <!-- <input type="text" class="form-control" id="occupation" name="occupation" required/> -->
-                        <select class="form-select col-4" aria-label="Default select example" id="occupation" name="occupation">
-                            <option value="ANY">ANY</option>
-                            <?php
-                            $basic = "SELECT * FROM occupation ";
-                            $basicresult = mysqli_query($con, $basic);
-                            while ($rowbasic = mysqli_fetch_assoc($basicresult)) {
-                            ?>
-                                <option value="<?php echo $rowbasic["o_value"] ?>"><?php echo $rowbasic["o_value"] ?></option>
-                            <?php } ?>
-                        </select>
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">District</label><label style="color:red;"> *</label>
+                            <!-- <input type="text" class="form-control" id="district" name="district" required/> -->
+                            <select class="form-select col-4" id="district" name="district">
+                                <option value="ANY">ANY</option>
+                                <?php
+                                $basic = "SELECT * FROM district ";
+                                $basicresult = mysqli_query($con, $basic);
+                                while ($rowbasic = mysqli_fetch_assoc($basicresult)) {
+                                ?>
+                                    <option value="<?php echo $rowbasic["d_value"] ?>"><?php echo $rowbasic["d_value"] ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
                     </div>
-                </div>
-
-            </div>
-
-            <div class="row">
-
-                <div class="col">
-                    <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Language</label><label style="color:red;"> *</label>
-                        <!-- <input type="text" class="form-control" id="mothertongue" name="mothertongue" required/> -->
-                        <select class="form-select col-4" aria-label="Default select example" id="mothertongue" name="mothertongue">
-                            <option value="ANY">ANY</option>
-                            <?php
-                            $basic = "SELECT * FROM language ";
-                            $basicresult = mysqli_query($con, $basic);
-                            while ($rowbasic = mysqli_fetch_assoc($basicresult)) {
-                            ?>
-                                <option value="<?php echo $rowbasic["l_value"] ?>"><?php echo $rowbasic["l_value"] ?></option>
-                            <?php } ?>
-                        </select>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">State</label><label style="color:red;"> *</label>
+                            <!-- <input type="text" class="form-control" id="state" name="state" required/> -->
+                            <select class="form-select col-4" id="state" name="state">
+                                <option value="ANY">ANY</option>
+                                <?php
+                                $basic = "SELECT * FROM state ";
+                                $basicresult = mysqli_query($con, $basic);
+                                while ($rowbasic = mysqli_fetch_assoc($basicresult)) {
+                                ?>
+                                    <option value="<?php echo $rowbasic["s_value"] ?>"><?php echo $rowbasic["s_value"] ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
                     </div>
-                </div>
-
-                <div class="col">
-                    <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Color</label><label style="color:red;"> *</label>
-                        <div class="container">
-                            <div class="row">
-                                <select class="form-select col-4" aria-label="Default select example" id="color" name="color">
-                                    <option value="ANY">ANY</option>
-                                    <option value="Dark">Dark</option>
-                                    <option value="Normal">Normal</option>
-                                    <option value="White">White</option>
-                                </select>
-                            </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Country</label><label style="color:red;"> *</label>
+                            <!-- <input type="text" class="form-control" id="country" name="country" required/> -->
+                            <select class="form-select col-4" id="country" name="country">
+                                <option value="ANY">ANY</option>
+                                <option value="INDIA">INDIA</option>
+                            </select>
                         </div>
                     </div>
                 </div>
 
-            </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Height min</label><label style="color:red;"> *</label>
+                            <input type="number" class="form-control" id="heightmin" name="heightmin" min="50" max="250" required />
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Height max</label><label style="color:red;"> *</label>
+                            <input type="number" class="form-control" id="heightmax" name="heightmax" min="50" max="250" required />
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Age min</label><label style="color:red;"> *</label>
+                            <input type="number" class="form-control" id="agemin" name="agemin" value="18" min="18" max="100" required />
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Age max</label><label style="color:red;"> *</label>
+                            <input type="number" class="form-control" id="agemax" name="agemax" min="18" max="100" required />
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Religion</label><label style="color:red;"> *</label>
+                            <!-- <input type="text" class="form-control" id="religion" name="religion"  required/> -->
+                            <select class="form-select col-4" id="religion" name="religion">
+                                <option value="ANY">ANY</option>
+                                <?php
+                                $basic = "SELECT * FROM religion ";
+                                $basicresult = mysqli_query($con, $basic);
+                                while ($rowbasic = mysqli_fetch_assoc($basicresult)) {
+                                ?>
+                                    <option value="<?php echo $rowbasic["r_value"] ?>"><?php echo $rowbasic["r_value"] ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Caste</label><label style="color:red;"> *</label>
+                            <!-- <input type="text" class="form-control" id="caste" name="caste"  required/> -->
+                            <select class="form-select col-4" id="caste" name="caste">
+                                <option value="ANY">ANY</option>
+                                <?php
+                                $basic = "SELECT * FROM caste ";
+                                $basicresult = mysqli_query($con, $basic);
+                                while ($rowbasic = mysqli_fetch_assoc($basicresult)) {
+                                ?>
+                                    <option value="<?php echo $rowbasic["c_value"] ?>"><?php echo $rowbasic["c_value"] ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Body Type</label><label style="color:red;"> *</label>
+                            <!-- <div class="container"> -->
+                            <!-- <div class="row"> -->
+                            <select class="form-select col-4" aria-label="Default select example" id="bodytype" name="bodytype">
+                                <option value="ANY">ANY</option>
+                                <option value="Slim">Slim</option>
+                                <option value="Normal">Normal</option>
+                                <option value="Fat">Fat</option>
+                            </select>
+                            <!-- </div> -->
+                            <!-- </div> -->
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Drink</label><label style="color:red;"> *</label>
+                            <!-- <div class="container">
+                <div class="row"> -->
+                            <select class="form-select col-4" aria-label="Default select example" id="drink" name="drink">
+                                <option value="ANY">ANY</option>
+                                <option value="YES">YES</option>
+                                <option value="NO">NO</option>
+                            </select>
+                            <!-- </div>
+            </div> -->
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Smoke</label><label style="color:red;"> *</label>
+                            <!-- <div class="container">
+                <div class="row"> -->
+                            <select class="form-select col-4" aria-label="Default select example" id="smoke" name="smoke">
+                                <option value="ANY">ANY</option>
+                                <option value="YES">YES</option>
+                                <option value="NO">NO</option>
+                            </select>
+                            <!-- </div>
+            </div> -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Finantial Status</label><label style="color:red;"> *</label>
+                            <!-- <div class="container">
+                    <div class="row"> -->
+                            <select class="form-select col-4" aria-label="Default select example" id="finantialstatus" name="finantialstatus">
+                                <option value="ANY">ANY</option>
+                                <option value="Poor">Poor</option>
+                                <option value="Middle">Middle</option>
+                                <option value="High">High</option>
+                            </select>
+                            <!-- </div>
+                </div> -->
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Occupation</label><label style="color:red;"> *</label>
+                            <!-- <input type="text" class="form-control" id="occupation" name="occupation" required/> -->
+                            <select class="form-select col-4" aria-label="Default select example" id="occupation" name="occupation">
+                                <option value="ANY">ANY</option>
+                                <?php
+                                $basic = "SELECT * FROM occupation ";
+                                $basicresult = mysqli_query($con, $basic);
+                                while ($rowbasic = mysqli_fetch_assoc($basicresult)) {
+                                ?>
+                                    <option value="<?php echo $rowbasic["o_value"] ?>"><?php echo $rowbasic["o_value"] ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Language</label><label style="color:red;"> *</label>
+                            <!-- <input type="text" class="form-control" id="mothertongue" name="mothertongue" required/> -->
+                            <select class="form-select col-4" aria-label="Default select example" id="mothertongue" name="mothertongue">
+                                <option value="ANY">ANY</option>
+                                <?php
+                                $basic = "SELECT * FROM language ";
+                                $basicresult = mysqli_query($con, $basic);
+                                while ($rowbasic = mysqli_fetch_assoc($basicresult)) {
+                                ?>
+                                    <option value="<?php echo $rowbasic["l_value"] ?>"><?php echo $rowbasic["l_value"] ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Color</label><label style="color:red;"> *</label>
+                            <div class="container">
+                                <div class="row">
+                                    <select class="form-select col-4" aria-label="Default select example" id="color" name="color">
+                                        <option value="ANY">ANY</option>
+                                        <option value="Dark">Dark</option>
+                                        <option value="Normal">Normal</option>
+                                        <option value="White">White</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
 
 
 
@@ -502,12 +482,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
 
-            <div class="row">
-                <div class="col">
-                    <center><button type="submit" class="btn btn-primary" value="Login" onclick="profileentry()">Submit</button></center>
+                <div class="row">
+                    <div class="col">
+                        <center><button type="submit" class="btn btn-primary" value="Login" onclick="profileentry()">Submit</button></center>
+                    </div>
                 </div>
             </div>
-        </div>
 
 
 
@@ -529,16 +509,17 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
 
-    </form>
+        </form>
 
 
 
 
 
+    </div>
 
 
 
-
+<br>
 
 
 

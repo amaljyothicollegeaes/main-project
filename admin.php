@@ -25,7 +25,8 @@ include("menubar2.php");
 <!-- <body style="background-color:#e8e8e8;"> -->
 
 <body>
-  <form class="border border-4 border-dark rounded" style="margin-right:4%;margin-left:4%;">
+  <!-- <form class="border border-2 border-dark rounded" style="margin-right:4%;margin-left:4%;background-color:cadetblue"> -->
+  <form class="rounded border border-info" style="margin-right:4%;margin-left:4%;background-color:#e2ebeb">
     <br>
     <center>
       <h3 class="bg-dark rounded" style="color:blue;margin-right:1%;margin-left:1%;padding:1%">VERIFY USERS</h3>

@@ -1,5 +1,7 @@
 <?php
 include("menubar.php");
+
+
 ?>
 
 
@@ -28,33 +30,34 @@ include("menubar.php");
                     </div>
                 </div>
             </div>
+
             <div class="row">
                 <div class="col-md-6">
 
 
                     <!-- Form itself -->
-                    <form name="sentMessage" id="contactForm" novalidate>
+                    <form name="sentMessage" id="contactForm" action="feedback.php" method="post">
                         <br>
                         <h3>Contact me</h3>
                         <div class="control-group">
                             <div class="controls">
-                                <input type="text" class="form-control" placeholder="Full Name" id="name" required data-validation-required-message="Please enter your name" />
+                                <input type="text" class="form-control" placeholder="Full Name" id="fullname" name="fullname"  required/>
                                 <p class="help-block"></p>
                             </div>
                         </div>
                         <div class="control-group">
                             <div class="controls">
-                                <input type="email" class="form-control" placeholder="Email" id="email" required data-validation-required-message="Please enter your email" />
+                                <input type="email" class="form-control" placeholder="Email" id="email" name="email" required  />
                             </div>
                         </div>
 
                         <div class="control-group">
                             <div class="controls">
-                                <textarea rows="10" cols="100" class="form-control" placeholder="Message" id="message" required data-validation-required-message="Please enter your message" minlength="5" data-validation-minlength-message="Min 5 characters" maxlength="999" style="resize:none"></textarea>
+                                <textarea rows="10" cols="100" class="form-control" placeholder="Message" id="message" name="message"></textarea>
                             </div>
                         </div>
                         <div id="success"> </div> <!-- For success/fail messages -->
-                        <button type="submit" class="btn btn-primary pull-right" style="margin-left: 40%;">Send</button><br><br>
+                        <input type="submit" class="btn btn-primary pull-right" value="Send" style="margin-left: 40%;" /><br><br>
                     </form>
                 </div>
                 <div class="col-md-6">
@@ -100,7 +103,7 @@ include("menubar.php");
 
     <div class="menu2">
         <ul>
-            <li><a href="http://localhost/ewed/">HELP
+            <li><a href="index.php">HELP
                     <ol>
                         <li>FAQ
                         <li>
@@ -127,7 +130,7 @@ include("menubar.php");
                     </ol>
                 </a></li>
 
-            <li><a href="http://localhost/ewed/">MATRIMONY SERVICE
+            <li><a href="index.php">MATRIMONY SERVICE
                     <ol>
                         <li>Free Membership Service
                         <li>
@@ -181,7 +184,7 @@ include("menubar.php");
                     </ol>
                 </a></li>
 
-            <li><a href="CONTACT">CONTACT US
+            <li><a href="contact.php">CONTACT US
                     <ol>
                         <li>Team Welfare center
                         <li>
@@ -207,7 +210,7 @@ include("menubar.php");
                     </ol>
                 </a></li>
 
-            <li><a href="http://localhost/ewed/about.php">ABOUT US
+            <li><a href="about.php">ABOUT US
                     <ol>
                         <li>About us
                         <li>

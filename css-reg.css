@@ -1,7 +1,8 @@
 body {
   margin: 0;
   padding: 0;
-  background-image: url(s_images/003.jpg);
+  /* background-image: url(s_images/003.jpg); */
+  background: black;
   background-size: cover;
   background-position: absolute;
   font-family: sans-serif;

@@ -22,22 +22,23 @@ include("menubar3.php");
   </script>
 </head>
 
-<body>
-  <!-- <body style="background-color:#e8e8e8;"> -->
-  <form class="border border-2 border-dark rounded " style="margin-right:4%;margin-left:4%;background-color:whitesmoke">
+<body style="background-color:#e8eff4">
+  
+  <form class="border border-2 border-info rounded " style="margin-right:4%;margin-left:4%;background-color:white">
     <br>
     <center>
-      <h3 class="bg-dark rounded" style="color:blue;margin-right:1%;margin-left:1%;padding:1%">VERIFIED USERS</h3>
+      <h3 class="rounded" style="color:white;margin-right:1%;margin-left:1%;padding:1%;background-color:blue">VERIFIED USERS</h3>
     </center><br>
     <div class="container">
       <table id="example" class="table table-dark table-hover table-striped table-bordered">
         <thead>
           <tr>
             <th scope="col" style="color:whitesmoke">ID</th>
+            <th scope="col" style="color:whitesmoke">Image</th>
             <th scope="col" style="color:whitesmoke">User Name</th>
             <th scope="col" style="color:whitesmoke">Email</th>
+            <th scope="col" style="color:whitesmoke">KYC Status</th>
             <th scope="col" style="color:whitesmoke">View Profile</th>
-            <!-- <th scope="col">Confirm</th> -->
             <th scope="col" style="color:whitesmoke">Remove</th>
           </tr>
         </thead>
@@ -50,21 +51,85 @@ include("menubar3.php");
 
         ?>
             <tr>
-              <td>
+              <td style="color:blue">
                 <?php echo $row["cid"]; ?>
               </td>
+
+
+              <?php
+
+              $cid = $row["cid"];
+              $table_cid = "SELECT * from photos where cid = $cid";
+              $result_cid = mysqli_query($con, $table_cid);
+              $data_cid = mysqli_fetch_assoc($result_cid);
+              ?>
+              <td>
+                <center>
+                  <?php $profile = $data_cid["profiles"]; ?>
+                  <img src="image_upload/images/<?php echo $profile; ?>" style="width: 40px;height: 40px;border-radius:20px;border:2px solid blue;" alt="No_Image" />
+                </center>
+              </td>
+              <?php
+
+
+              ?>
+
+
+
               <?php
               ?>
               <td>
                 <?php echo $row["fname"] . " " . $row["lname"]; ?>
               </td>
               <?php
+
               ?>
               <td>
                 <?php echo $row["email"]; ?>
               </td>
-              <?php
-              ?>
+
+
+
+              <td>
+                <?php
+                $fetch_proof_status = "SELECT proof_status FROM status where cid = $cid";
+                $fetch_proof_status_result = mysqli_query($con, $fetch_proof_status);
+                $data_fetch_proof_status_result = mysqli_fetch_assoc($fetch_proof_status_result);
+                if ($data_fetch_proof_status_result["proof_status"] == 0) {
+                ?>
+
+
+
+                  <input type="button" readonly value="KYC To Be Processed" class="btn btn-outline-primary " style="color:white;" />
+
+                <?php
+                } elseif ($data_fetch_proof_status_result["proof_status"] == 2) {
+                ?>
+                  <input type="button" readonly value="KYC Rejected" class="btn btn-outline-danger " style="color:white;" />
+                <?php
+                } else {
+                ?>
+                  <input type="button" readonly value="KYC Approved" class="btn btn-outline-primary " style="color:white;" />
+
+
+
+
+
+
+
+
+
+
+
+                <?php
+                }
+                ?>
+              </td>
+
+
+
+
+
               <td>
 
                 <a href="managing_view.php?id=<?= $row["cid"] ?>" class="btn btn-outline-secondary" style="color:whitesmoke" ;>View</a>
@@ -78,11 +143,22 @@ include("menubar3.php");
                 <a href="managing_blacklist_remove.php?id=<?= $row["cid"] ?>" class="btn btn-outline-danger" style="color:whitesmoke" ;>Remove</a>
               </td>
             </tr>
-        <?php
+          <?php
 
           }
+        } else {
+          ?>
+          <tr>
+            <td colspan="7">
+              <center>
+                No New Entry
+              </center>
+            </td>
+          </tr>
+        <?php
         }
         ?>
+
 
 
 

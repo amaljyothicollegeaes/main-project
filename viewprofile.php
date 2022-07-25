@@ -17,7 +17,8 @@ $dbpassword = "";
 $dbname = "ewed";
 $con = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbname);
 
-
+$visit_query = "INSERT INTO visitors(cid, visited_id) VALUES ($id, $ids)";
+mysqli_query($con, $visit_query);
 
 // if(isset($_POST['update']))
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
@@ -122,11 +123,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         lname ='$lname' 
         where id = $ids ";
 
-        // $query = "INSERT into profiledata (email,age,heigth,sex,religion,caste,subcaste,district,state,country,maritalstatus,profilecreatedby,educationqualification,fname,lname,bodytype,financialstatus,drink,smoke,mothertounge,color,weight,bloodtype,dob,occupation,occudiscription,annualincome,fathername,mothername,fatheroccupation,motheroccupation,noofbro,noofsis,marriedbro,marriedsis) values 
-        // (`$mail`, $age, $height, '$sex', `$religion`, `$caste`, `$subcaste`, `$district`, `$state`, `$country`, $maritalStatus, 
-        //`$profilecreatedby`, `$education`, `$fname`, `$lname`, `$bodytype`, `$finantialstatus`, `$drink`, `$smoke`, `$mothertongue`, `$color`, 
-        //$weight, `$bloodtype`, `$dob`, `$occupation`, `$occudescription`, `$Annualincome`, `$fathername`, `$mothername`, `$fatheroccupation`, 
-        //`$motheroccupation`, `$noofbro`, `$noofsis`, `$noofbromarried`, `$noofsismarried`) where cid = 43";
+
         $result = mysqli_query($con, $query);
         mysqli_query($con, $query3);
         if ($result) {
@@ -149,7 +146,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 </head>
 
-<body>
+<body style="background-color:#e8eff4">
     <nav class="navbar navbar-light bg-dark fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="#" style="color:blue;margin-left:20px">
@@ -192,31 +189,16 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 <button class=" navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" style="background:grey">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div style="color:blue;background:black;border:white;" class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                     <div class="offcanvas-header">
                         <h5 class="offcanvas-title" id="offcanvasNavbarLabel" style="color:blue">E Wed</h5>
                         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body">
-                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3" style="font-weight:bold;">
-                            <li class="nav-item">
-                                <a class="nav-link " aria-current="page" href="personaldetail.php?id=<?= $id ?>">View and Edit Profiles</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link " aria-current="page" href="main.php">Matches</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="my_matches.php">My Matches</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="requests.php?id=<?= $id ?>">Requests</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="logout.php">Logout</a>
-                            </li>
-                            <br>
-                        </ul>
 
+                        <?php
+                        include("side_menu.php");
+                        ?>
                     </div>
                 </div>
         </div>
@@ -226,9 +208,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
     <br><br><br><br>
-    <div class="container" style="padding: 15px;box-shadow: 1px 1px 5px 5px lightblue;border-radius:5px;">
+    <div class="container" style="padding: 15px;box-shadow: 1px 1px 5px 5px lightblue;border-radius:5px;background-color:white">
         <center>
-            <h3 style="color:blue">Your Profile</h3>
+            <h3 style="color:blue">Profile Details</h3>
         </center>
     </div><br>
     <?php
@@ -262,7 +244,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
                     <form name="profile" method="POST">
 
-                        <div class="container" style="padding: 15px;box-shadow: 1px 1px 5px 5px lightblue;border-radius:5px;">
+                        <div class="container" style="padding: 15px;box-shadow: 1px 1px 5px 5px lightblue;border-radius:5px;background-color:white">
                             <!-- <div class="container" style="background-color:#e0ecf2;padding: 15px;box-shadow: 5px 5px lightblue;"> -->
                             <div class="row">
                                 <label for="exampleInputEmail1" class="form-label" style="color:white;background-color:blue;margin-top: 10px;">
@@ -454,7 +436,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
 
-                        <div class="container" style="padding: 15px;box-shadow: 1px 1px 5px 5px lightblue;border-radius:5px;">
+                        <div class="container" style="padding: 15px;box-shadow: 1px 1px 5px 5px lightblue;border-radius:5px;background-color:white">
                             <div class="row">
                                 <label for="exampleInputEmail1" class="form-label" style="color:white;background-color:blue;margin-top: 10px;">
                                     <h4>
@@ -520,18 +502,19 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                                     ?>
                                     </div>
 
-                                    <!-- </div> -->
+
                                     <br>
                                 </div>
+                            </center>
                         </div>
-                        </center>
+
                         <br>
 
 
 
 
 
-                        <div class="container" style="padding: 15px;box-shadow: 1px 1px 5px 5px lightblue;border-radius:5px;">
+                        <div class="container" style="padding: 15px;box-shadow: 1px 1px 5px 5px lightblue;border-radius:5px;background-color:white">
                             <div class="row">
                                 <br><br>
                                 <label for="exampleInputEmail1" class="form-label" style="color:white;background-color:blue;margin-top: 10px;">
@@ -614,7 +597,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
 
-                        <div class="container" style="padding: 15px;box-shadow: 1px 1px 5px 5px lightblue;border-radius:5px;">
+                        <div class="container" style="padding: 15px;box-shadow: 1px 1px 5px 5px lightblue;border-radius:5px;background-color:white">
                             <div class="row">
                                 <br><br>
                                 <label for="exampleInputEmail1" class="form-label" style="color:white;background-color:blue;margin-top: 10px;">
@@ -676,7 +659,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                         </div>
                         <br>
 
-                        <div class="container" style="padding: 15px;box-shadow: 1px 1px 5px 5px lightblue;border-radius:5px;">
+                        <div class="container" style="padding: 15px;box-shadow: 1px 1px 5px 5px lightblue;border-radius:5px;background-color:white">
                             <div class="row">
                                 <br><br>
                                 <label for="exampleInputEmail1" class="form-label" style="color:white;background-color:blue;margin-top: 10px;">
@@ -745,12 +728,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
                 while ($row = mysqli_fetch_assoc($result)) {
-
-
                     ?>
-
                         <br>
-                        <div class="container" style="padding: 15px;box-shadow: 1px 1px 5px 5px lightblue;border-radius:5px;">
+                        <div class="container" style="padding: 15px;box-shadow: 1px 1px 5px 5px lightblue;border-radius:5px;background-color:white">
                             <div class="row">
                                 <br><br>
                                 <label for="exampleInputEmail1" class="form-label" style="color:white;background-color:blue;margin-top: 10px;">
@@ -891,71 +871,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                     </form>
 
                 </section>
-
-
     <?php
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 }
             }
         }
-        // echo "welcome";
     ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </body>
 <br>

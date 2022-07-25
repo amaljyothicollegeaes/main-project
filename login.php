@@ -9,6 +9,8 @@ $dbname = "ewed";
 $con = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbname);
 
 
+
+
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
   $password = $_POST['password'];
   $mail = $_POST['mail'];
@@ -30,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             if ($profilestatusdata['profilestatus'] == 0 || $profilestatusdata['profilestatus'] == 4 || $profilestatusdata['profilestatus'] == 5) {
 ?>
               <script>
-                alert('Your are under processing,login after some times // your are being blacklisted');
+                alert('Your are under processing,login after some times // Your account is Deactive !!');
               </script>
             <?php
               unset($_SESSION['id']);
@@ -131,10 +133,23 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     }
   </script>
+  <style>
+    #myVideo {
+      position: cover center;
+      right: 0;
+      bottom: 0;
+      /* margin-left: -50%; */
+      width: 100%;
+      height: 90%;
+    }
+  </style>
 
 </head>
 
-<body>
+<body style="background-color:black;">
+  <video autoplay muted loop id="myVideo">
+    <source src="s_images/golden.mp4" type="video/mp4">
+  </video>
   <div class="loginbox">
     <img src="avatar.png" class="avatar">
     <h1>LOGIN HERE</h1>
@@ -151,7 +166,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
       <center><input type="submit" value="Login" onclick="sub()"></center>
     </form>
     <br>
-    <center><a href="">Forgot password ?</a>
+    <center><a href="mail/forgot_password.php">Forgot password ?</a>
       <a href="register.php">Don't have an account ?</a>
     </center>
   </div>

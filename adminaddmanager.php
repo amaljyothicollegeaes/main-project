@@ -15,8 +15,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $password = $_POST['password'];
     $mail = $_POST['mail'];
     $phone = $_POST['phone'];
-
+    echo "one";
     if ($mail != "") {
+        echo "two";
         $query = "INSERT into login (fname,lname,email,password,phone) values ('$fname','$lname','$mail','$password',$phone)";
         $result = mysqli_query($con, $query);
         if ($result) {
@@ -61,7 +62,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 </head>
 
 <body>
-    <form name="profile" method="POST" class="border border-4 border-dark rounded" style="margin-right:4%;margin-left:4%;"><br>
+    <!-- <form name="profile" method="POST" class="border border-2 border-dark rounded" style="margin-right:4%;margin-left:4%;background-color:cadetblue"> -->
+    <form method="POST" class="rounded border border-info" style="margin-right:4%;margin-left:4%;background-color:#e2ebeb">
+        <br>
         <center>
             <h3 class="bg-dark rounded" style="color:blue;margin-right:1%;margin-left:1%;padding:1%">ADD MANAGING USERS</h3>
         </center><br><br>
@@ -72,13 +75,13 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 <div class="col">
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">First Name</label><label style="color:red;"> *</label>
-                        <input type="text" value="" class="form-control" id="fname" name="fname" placeholder="Enter First Name">
+                        <input type="text" value="" class="form-control" id="fname" name="fname" placeholder="Enter First Name" min="3" required />
                     </div>
                 </div>
                 <div class="col">
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Last Name</label><label style="color:red;"> *</label>
-                        <input type="text" value="" class="form-control" id="lname" name="lname" placeholder="Enter Second Name">
+                        <input type="text" value="" class="form-control" id="lname" name="lname" placeholder="Enter Second Name" required />
                     </div>
                 </div>
             </div>
@@ -108,7 +111,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
             <div class="row">
                 <div class="col">
-                    <center><button type="submit" class="btn btn-primary" value="Login" onclick="profileentry()">Submit</button></center>
+                    <center><input type="submit" class="btn btn-primary" value="Submit" /></center>
                 </div>
             </div><br>
 

@@ -26,7 +26,7 @@ include("menubar.php");
 
     <div class="menu2">
         <ul>
-            <li><a href="http://localhost/ewed/">HELP
+            <li><a href="index.php">HELP
                     <ol>
                         <li>FAQ
                         <li>
@@ -53,7 +53,7 @@ include("menubar.php");
                     </ol>
                 </a></li>
 
-            <li><a href="http://localhost/ewed/">MATRIMONY SERVICE
+            <li><a href="index.php">MATRIMONY SERVICE
                     <ol>
                         <li>Free Membership Service
                         <li>
@@ -80,7 +80,7 @@ include("menubar.php");
                     </ol>
                 </a></li>
 
-            <li><a href="SERVICE">OTHER SERVICE
+            <li><a href="index.php">OTHER SERVICE
                     <ol>
                         <li>Matrimony Blog
                         <li>
@@ -107,7 +107,7 @@ include("menubar.php");
                     </ol>
                 </a></li>
 
-            <li><a href="CONTACT">CONTACT US
+            <li><a href="contact.php">CONTACT US
                     <ol>
                         <li>Team Welfare center
                         <li>
@@ -133,7 +133,7 @@ include("menubar.php");
                     </ol>
                 </a></li>
 
-            <li><a href="http://localhost/ewed/about.php">ABOUT US
+            <li><a href="about.php">ABOUT US
                     <ol>
                         <li>About us
                         <li>

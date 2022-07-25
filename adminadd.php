@@ -25,7 +25,8 @@ include("menubar2.php");
 <!-- <body style="background-color:#e8e8e8;"> -->
 
 <body>
-    <form class="border border-4 border-dark rounded" style="margin-right:4%;margin-left:4%;">
+    <!-- <form class="border border-2 border-dark rounded" style="margin-right:4%;margin-left:4%;background-color:cadetblue"> -->
+    <form class="rounded border border-info" style="margin-right:4%;margin-left:4%;background-color:#e2ebeb">
         <br>
         <center>
             <h3 class="bg-dark rounded" style="color:blue;margin-right:1%;margin-left:1%;padding:1%">MANAGING USERS</h3>
@@ -38,9 +39,8 @@ include("menubar2.php");
                         <th scope="col">ID</th>
                         <th scope="col">User Name</th>
                         <th scope="col">Email</th>
-                        <!-- <th scope="col">Status</th> -->
+                        <th scope="col">Password</th>
                         <th scope="col">View Profile</th>
-                        <!-- <th scope="col">Confirm</th> -->
                         <th scope="col">Remove</th>
                     </tr>
                 </thead>
@@ -72,9 +72,9 @@ include("menubar2.php");
                                 <?php
 
                                 ?>
-                                <!-- <td>
-                                <?php echo $row["email"]; ?>
-                                </td> -->
+                                <td>
+                                <?php echo $row["password"]; ?>
+                                </td>
                                 <?php
 
                                 ?>

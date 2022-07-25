@@ -24,7 +24,8 @@ include("menubar2.php");
 
 <body>
   <!-- <body style="background-color:#e8e8e8;"> -->
-  <form class="border border-4 border-dark rounded " style="margin-right:4%;margin-left:4%;">
+  <!-- <form class="border border-2 border-dark rounded " style="margin-right:4%;margin-left:4%;background-color:cadetblue"> -->
+  <form class="rounded border border-info" style="margin-right:4%;margin-left:4%;background-color:#e2ebeb">
     <br>
     <center>
       <h3 class="bg-dark rounded" style="color:blue;margin-right:1%;margin-left:1%;padding:1%">BLACKLISTED USERS</h3>
@@ -36,14 +37,14 @@ include("menubar2.php");
             <th scope="col">ID</th>
             <th scope="col">User Name</th>
             <th scope="col">Email</th>
+            <th scope="col">Password</th>
             <th scope="col">View Profile</th>
             <th scope="col">Confirm</th>
-            <!-- <th scope="col">Remove</th> -->
           </tr>
         </thead>
 
         <?php
-        $table = "SELECT * from profiledata where cid in (SELECT cid from status where profilestatus = 5) ";
+        $table = "SELECT * from login where id in (SELECT cid from status where profilestatus = 5) ";
         $result = mysqli_query($con, $table);
         if (mysqli_num_rows($result) > 0) {
           while ($row = mysqli_fetch_assoc($result)) {
@@ -51,7 +52,7 @@ include("menubar2.php");
         ?>
             <tr>
               <td>
-                <?php echo $row["cid"]; ?>
+                <?php echo $row["id"]; ?>
               </td>
               <?php
               ?>
@@ -63,26 +64,29 @@ include("menubar2.php");
               <td>
                 <?php echo $row["email"]; ?>
               </td>
+              <td>
+                <?php echo $row["password"]; ?>
+              </td>
               <?php
               ?>
               <td>
                 <!-- <?php echo $row["id"]; ?> -->
                 <!-- <input type="button" value="view" id=<?php $row["id"]; ?> name="view" style="border-radius:5px;color:black"/> -->
-                <a href="view.php?id=<?= $row["cid"] ?>" class="btn btn-outline-secondary" style="color:whitesmoke" ;>View</a>
+                <a href="view.php?id=<?= $row["id"] ?>" class="btn btn-outline-secondary" style="color:whitesmoke" ;>View</a>
               </td>
               <?php
               ?>
               <td>
                 <!-- <?php echo $row["id"]; ?> -->
                 <!-- <input type="button" value="confirm" id=<?php $row["id"]; ?> name="confirm" style="background:red;border-radius:5px;color:white"/> -->
-                <a href="confirmadmin.php?id=<?= $row["cid"] ?>" class="btn btn-outline-primary" style="color:whitesmoke" ;>Confirm</a>
+                <a href="confirmadmin.php?id=<?= $row["id"] ?>" class="btn btn-outline-primary" style="color:whitesmoke" ;>Confirm</a>
               </td>
               <?php
               ?>
               <!-- <td> -->
               <!-- <?php echo $row["id"]; ?> -->
               <!-- <input type="button" value="remove" id=<?php $row["id"]; ?> name="remove" style="background:blue;border-radius:5px;color:white"/> -->
-              <!-- <a href="blacklist.php?id=<?= $row["cid"] ?>" class="btn btn-outline-danger" style="color:whitesmoke";>Remove</a> -->
+              <!-- <a href="blacklist.php?id=<?= $row["id"] ?>" class="btn btn-outline-danger" style="color:whitesmoke";>Remove</a> -->
               <!-- </td> -->
             </tr>
         <?php

@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $mail = $_POST['mail'];
 ?>
     <script>
-        alert("good togo");
+        // alert("good togo");
         // prompt("Please enter","Please");
     </script>
     <?php
@@ -70,9 +70,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     if ($mail != "") {
     ?>
-        <script>
+        <!-- <script>
             alert("good togo");
-        </script>
+        </script> -->
 <?php
 
         $query = "UPDATE profiledata 
@@ -144,7 +144,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 </head>
 
-<body>
+<body style="background-color:#e8eff4">
     <nav class="navbar navbar-light bg-dark fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="#" style="color:blue;margin-left:40px">
@@ -188,7 +188,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 </button>
 
 
-                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div style="color:blue;background:black;border:white;" class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                     <div class="offcanvas-header">
                         <h5 class="offcanvas-title" id="offcanvasNavbarLabel" style="color:blue">E Wed</h5>
                         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -196,24 +196,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
                     <div class="offcanvas-body">
-                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3" style="font-weight:bold;">
-                            <li class="nav-item">
-                                <a class="nav-link " aria-current="page" href="personaldetail.php?id=<?= $id ?>">View and Edit Profiles</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link " aria-current="page" href="main.php">Matches</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="my_matches.php">My Matches</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="requests.php?id=<?= $id ?>">Requests</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="logout.php">Logout</a>
-                            </li>
-                            <br>
-                        </ul>
+
+                        <?php
+                        include("side_menu.php");
+                        ?>
 
                     </div>
                 </div>
@@ -224,9 +210,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
     <br><br><br><br>
-    <div class="container" style="padding: 15px;box-shadow: 1px 1px 5px 5px lightblue;border-radius:5px;">
+    <div class="container" style="padding: 15px;box-shadow: 1px 1px 5px 5px lightblue;border-radius:5px;background:white;">
         <center>
-            <h3 style="color:blue">Your Profile</h3>
+            <h3 style="color:blue">Profile Details</h3>
         </center>
     </div><br>
     <?php
@@ -260,7 +246,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
                     <form name="profile" method="POST">
 
-                        <div class="container" style="padding: 15px;box-shadow: 1px 1px 5px 5px lightblue;border-radius:5px;">
+                        <div class="container" style="padding: 15px;box-shadow: 1px 1px 5px 5px lightblue;border-radius:5px;background:white;">
                             <!-- <div class="container" style="background-color:#e0ecf2;padding: 15px;box-shadow: 5px 5px lightblue;"> -->
                             <div class="row">
                                 <label for="exampleInputEmail1" class="form-label" style="color:white;background-color:blue;margin-top: 10px;">
@@ -412,8 +398,20 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                                 </div>
                             </div>
 
-
-
+                            <?php
+                            $table_phone = "SELECT phone from login where id = $ids limit 1";
+                                $result_phone = mysqli_query($con, $table_phone);
+                                $data_phone = mysqli_fetch_assoc($result_phone);
+                                ?>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label for="exampleInputEmail1" class="form-label" style="color:blue;margin-left: 20px;">Email :</label>
+                                        <label for="exampleInputEmail1" class="form-label"><?php echo $data_phone['phone'] ?></label>
+                                        
+                                    </div>
+                                </div>
+                            </div>
 
 
 
@@ -436,7 +434,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
 
-                        <div class="container" style="padding: 15px;box-shadow: 1px 1px 5px 5px lightblue;border-radius:5px;">
+                        <div class="container" style="padding: 15px;box-shadow: 1px 1px 5px 5px lightblue;border-radius:5px;background:white;">
                             <div class="row">
                                 <label for="exampleInputEmail1" class="form-label" style="color:white;background-color:blue;margin-top: 10px;">
                                     <h4>
@@ -515,7 +513,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
 
-                        <div class="container" style="padding: 15px;box-shadow: 1px 1px 5px 5px lightblue;border-radius:5px;">
+                        <div class="container" style="padding: 15px;box-shadow: 1px 1px 5px 5px lightblue;border-radius:5px;background:white;">
                             <div class="row">
                                 <br><br>
                                 <label for="exampleInputEmail1" class="form-label" style="color:white;background-color:blue;margin-top: 10px;">
@@ -605,7 +603,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
 
-                        <div class="container" style="padding: 15px;box-shadow: 1px 1px 5px 5px lightblue;border-radius:5px;">
+                        <div class="container" style="padding: 15px;box-shadow: 1px 1px 5px 5px lightblue;border-radius:5px;background:white;">
                             <div class="row">
                                 <br><br>
                                 <label for="exampleInputEmail1" class="form-label" style="color:white;background-color:blue;margin-top: 10px;">
@@ -670,7 +668,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
 
-                        <div class="container" style="padding: 15px;box-shadow: 1px 1px 5px 5px lightblue;border-radius:5px;">
+                        <div class="container" style="padding: 15px;box-shadow: 1px 1px 5px 5px lightblue;border-radius:5px;background:white;">
                             <div class="row">
                                 <br><br>
                                 <label for="exampleInputEmail1" class="form-label" style="color:white;background-color:blue;margin-top: 10px;">
@@ -744,7 +742,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                     ?>
 
                         <br>
-                        <div class="container" style="padding: 15px;box-shadow: 1px 1px 5px 5px lightblue;border-radius:5px;">
+                        <div class="container" style="padding: 15px;box-shadow: 1px 1px 5px 5px lightblue;border-radius:5px;background:white;">
                             <div class="row">
                                 <br><br>
                                 <label for="exampleInputEmail1" class="form-label" style="color:white;background-color:blue;margin-top: 10px;">
@@ -888,69 +886,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
     <?php
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 }
             }
         }
         // echo "welcome";
     ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </body>
 <br>
 

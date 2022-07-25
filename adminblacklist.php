@@ -24,7 +24,8 @@ include("menubar2.php");
 
 <body>
   <!-- <body style="background-color:#e8e8e8;"> -->
-  <form class="border border-4 border-dark rounded " style="margin-right:4%;margin-left:4%;">
+  <!-- <form class="border border-2 border-dark rounded " style="margin-right:4%;margin-left:4%;background-color:cadetblue"> -->
+  <form class="rounded border border-info" style="margin-right:4%;margin-left:4%;background-color:#e2ebeb">
     <br>
     <center>
       <h3 class="bg-dark rounded" style="color:blue;margin-right:1%;margin-left:1%;padding:1%">BLACKLISTED USERS</h3>
@@ -34,6 +35,7 @@ include("menubar2.php");
         <thead>
           <tr>
             <th scope="col">ID</th>
+            <th scope="col" style="color:whitesmoke">Image</th>
             <th scope="col">User Name</th>
             <th scope="col">Email</th>
             <th scope="col">View Profile</th>
@@ -53,8 +55,22 @@ include("menubar2.php");
               <td>
                 <?php echo $row["cid"]; ?>
               </td>
+
               <?php
+              $cid = $row["cid"];
+              $table_cid = "SELECT * from photos where cid = $cid";
+              $result_cid = mysqli_query($con, $table_cid);
+              $data_cid = mysqli_fetch_assoc($result_cid);
               ?>
+              <td>
+                <center>
+                  <?php $profile = $data_cid["profiles"]; ?>
+                  <img src="image_upload/images/<?php echo $profile; ?>" style="width: 40px;height: 40px;border-radius:20px;border:2px solid blue;" alt="No_Image" />
+                </center>
+              </td>
+
+
+
               <td>
                 <?php echo $row["fname"] . " " . $row["lname"]; ?>
               </td>
